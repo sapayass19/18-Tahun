@@ -1,0 +1,463 @@
+/* Styling untuk seluruh halaman (body) */
+body {
+    /* Gradasi warna pink dari atas ke bawah */
+    background: radial-gradient(circle at center, #FF9A9E 0%, #FAD0C4 40%, #FBC2EB 100%);
+    /* Agar halaman memenuhi seluruh viewport */
+    min-height: 100vh;
+    margin: 0;
+    /* Font dikembalikan ke Arial/Helvetica */
+    font-family: Arial, Helvetica, sans-serif;
+    /* Mengaktifkan Flexbox untuk centering konten utama */
+    display: flex;
+    justify-content: center; /* Centering horizontal */
+    align-items: center;    /* Centering vertical */
+    text-align: center; 
+    overflow-x: hidden; 
+    overflow-y: auto;
+}
+
+/* Container untuk mengatur posisi konten di tengah */
+.container {
+    width: 90%; 
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    transition: filter 0.3s ease;
+}
+
+/* Styling untuk kotak konten agar muncul perlahan (efek fade-in) */
+.content-box {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+}
+
+/* Styling untuk Foto Profil (Bulat) */
+.photo {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 50%; /* Bikin foto jadi bulet sempurna */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+/* Efek hover sederhana pada foto */
+.photo:hover {
+    transform: scale(1.03);
+}
+
+/* Ucapan Utama "Happy Birthday" */
+.heading-text {
+    /* Font dikembalikan ke Playfair Display */
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #333;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin: 20px 0 30px;
+    transition: color 0.3s ease, transform 0.3s ease; 
+}
+
+/* Tombol Glass Dasar (Base Style) */
+.glass-button {
+    font-family: inherit; /* Akan mengambil Arial/Helvetica dari body */
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.2);
+    
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    
+    /* ======== EFEK GLASS UTAMA ======== */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    
+    box-shadow: 
+        0 4px 10px rgba(0, 0, 0, 0.2),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.2),
+        inset 0 4px 6px rgba(255, 255, 255, 0.2);
+}
+
+/* Efek Hover pada Tombol Glass */
+.glass-button:hover {
+    transform: scale(1.05);
+}
+
+/* Tombol Call-to-Action (CTA) */
+.cta-button {
+    color: #ff69b4; 
+}
+
+.cta-button:hover {
+    background-color: rgba(255, 105, 180, 0.4);
+    color: #fff;
+    box-shadow: 
+        0 6px 12px rgba(0, 0, 0, 0.2),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.6),
+        inset 0 4px 8px rgba(255, 255, 255, 0.4);
+}
+
+/* Tombol 'X' (Close) di Pop-up */
+.close-x-btn {
+    position: absolute;
+    padding: 0 !important;
+    top: 10px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
+    background: rgba(255, 255, 255, 0.4); 
+    border: none;
+    border-radius: 50%; /* Bulat sempurna */
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ff69b4;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 10; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease; 
+}
+
+.close-x-btn:hover {
+    background: rgba(255, 105, 180, 0.6);
+    transform: scale(1.1);
+    color: #fff;
+}
+
+/* Styling untuk Tombol Skip/Tampilkan Seluruh Pesan */
+.skip-typing-btn {
+    margin: 20px auto 0;
+    display: block;
+    width: 80%; 
+    max-width: 250px;
+    color: #ff69b4;
+}
+
+.skip-typing-btn:hover {
+    transform: scale(1.05);
+    background-color: rgba(255, 105, 180, 0.4);
+    color: #fff;
+    box-shadow: 
+        0 6px 12px rgba(0, 0, 0, 0.2),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.6),
+        inset 0 4px 8px rgba(255, 255, 255, 0.4);
+}
+
+/* Overlay untuk menutupi layar dan menyebabkan blur (untuk pesan) */
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1010; /* Biar overlay muncul paling atas */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Class untuk menampilkan Overlay */
+.overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Konten Pop-up Pesan (Glassmorphism) */
+.popup-message {
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 30px;
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    margin: 0 10px;
+    transform: scale(0.8);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+/* Efek muncul Pop-up */
+.overlay.show .popup-message{
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Teks Pesan Ulang Tahun di dalam Pop-up */
+.message-text {
+    /* Font dikembalikan ke Poppins (ini memang bagian yang menggunakan Poppins di kode awal) */
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    white-space: pre-line; /* Penting untuk mempertahankan line breaks dari data-full-text */
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    max-height: 300px;
+    overflow-y: auto; /* Agar teks bisa di-scroll jika kepanjangan */
+    padding-right: 15px;
+}
+
+.message-text b,
+.message-text strong {
+    font-weight: bold !important;
+}
+
+/* Confetti Container (Opsional) */
+#confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+/* Efek Blur pada konten utama saat pop-up aktif */
+body.overlay-active .container {
+    filter: blur(5px);
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Keyframe untuk animasi jatuh confetti */
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Base style untuk setiap potongan confetti */
+.confetti-piece {
+    position: absolute;
+    top: -100px;
+    border-radius: 50%;
+    animation: fall linear infinite;
+    transform: rotate(0deg);
+}
+
+
+/* =================================== */
+/* ## STYLE PILIHAN MUSIK (MENGGUNAKAN POPPINS) ## */
+/* =================================== */
+
+/* Styling untuk Overlay Awal (Pilihan Musik) */
+.initial-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Background yang lebih gelap untuk fokus */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000; /* Pastikan dia paling atas */
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.initial-overlay.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Kustomisasi Pop-up Pilihan Musik */
+.music-choice-popup {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    max-width: 380px;
+    padding: 30px;
+    /* Reset transformasi dan opacity */
+    transform: scale(1);
+    opacity: 1;
+}
+
+.choice-heading {
+    /* Font diatur ke Poppins sesuai permintaan */
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-size: 2rem;
+    color: #ff69b4;
+    margin-top: 0;
+    margin-bottom: 25px; 
+}
+
+.choice-buttons-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px; /* Jarak antar tombol */
+    /* Tombol glass-button di dalam sini akan mewarisi font Arial/Helvetica dari body, 
+    jadi kita pastikan font-nya Poppins: */
+}
+
+/* Tambahkan font Poppins secara eksplisit ke tombol di dalam pop-up pilihan musik */
+.music-choice-popup .glass-button {
+     font-family: 'Poppins', sans-serif;
+}
+
+
+/* Audio Control Button (Mute/Unmute) */
+.audio-control {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1020;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 50%; /* bikin bentuknya jd bulet */
+    font-size: 1.5rem; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ff69b4;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px); 
+    box-shadow: 
+        0 4px 10px rgba(0, 0, 0, 0.1),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.2),
+        inset 0 4px 6px rgba(255, 255, 255, 0.2);
+        
+    /* Sembunyikan default, hanya tampilkan jika JS menambahkan class .show */
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.audio-control.show {
+    visibility: visible; /* Tampilkan jika class .show ada */
+    opacity: 1;
+}
+
+
+.audio-control:hover {
+    transform: scale(1.1);
+    color: #fff;
+    background-color: rgba(255, 105, 180, 0.4);
+    box-shadow: 
+        0 6px 12px rgba(255, 255, 255, 0.3),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.3),
+        inset 0 4px 8px rgba(255, 255, 255, 0.3);
+}
+
+
+/* ====== MEDIA QUERY HP (max-width: 480px) ====== */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .audio-control{
+        bottom: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .photo {
+        max-width: 220px;
+    }
+
+    .heading-text {
+        font-size: 2rem;
+        margin: 15px 0 20px;
+    }
+
+    .glass-button {
+        font-size: 1rem;
+        padding: 10px 18px;
+        border-radius: 15px;
+    }
+
+    .popup-message {
+        width: 90%;
+        padding: 20px;
+        max-width: 350px;
+    }
+    
+    .music-choice-popup {
+        padding: 20px;
+    }
+    .choice-heading {
+        font-size: 1.5rem;
+    }
+    .choice-buttons-container {
+        flex-direction: column;
+    }
+
+    .message-text {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        max-height: 35vh;
+        padding-right: 10px;
+    }
+
+    /* Tombol X di HP 480px */
+    .close-x-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+        top: 8px;
+        right: 8px;
+    }
+}
+
+/* ====== MEDIA QUERY HP SANGAT KECIL (max-width: 320px) ====== */
+@media (max-width: 320px) {
+    .container {
+        margin: 20px auto;
+    }
+
+    .photo {
+        max-width: 180px;
+    }
+
+    .heading-text {
+        font-size: 1.75rem; 
+        margin: 10px 0 15px;
+    }
+
+    .glass-button {
+        font-size: 0.9rem; 
+        padding: 8px 15px;
+    }
+
+    .popup-message {
+        padding: 15px;
+    }
+
+    .message-text {
+        font-size: 0.85rem; 
+    }
+    
+    /* Tombol X di HP 320px */
+    .close-x-btn {
+        width: 25px;
+        height: 25px;
+        font-size: 0.9rem;
+    }
+}

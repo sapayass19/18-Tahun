@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id" translate="no">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>18 Tahun!</title>
+        <link rel="icon" type="image/png" href="img/birthdaycake-favicon.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styling/style.css">
+    </head>
+    <body>
+        <audio id="birthdayMusic" src="music/Tulus - Monokrom Lirik Lagu Indonesia.mp3"></audio>
+        <button id="muteBtn" class="glass-button audio-control">
+            <i class="fa-solid fa-volume-xmark"></i>
+        </button>
+        <div class="container">
+            <div class="content-box" id="contentBox">
+                <img src="img/Naura-18th.png" alt="Foto Perempuan yang hari ini ulang tahun" class="photo">
+                <h1 class="heading-text">Happy Birthday</h1>
+                <button class="cta-button glass-button" id="openMessageBtn">Baca Pesan</button>
+            </div>
+        </div>
+
+        <div class="initial-overlay" id="musicChoiceOverlay">
+            <div class="popup-message music-choice-popup">
+                <h2 class="choice-heading">
+                    Mau Pake Lagu?
+                </h2>
+                <div class="choice-buttons-conteiner">
+                    <button class="cta-button glass-button" id="playMusicBtn">
+                        Ya, Pake
+                    </button>
+                    <button class="cta-button glass-button" id="noMusicBtn">
+                        Nggak usah, alay
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="overlay" id="messageOverlay">
+            <div class="popup-message">
+                <button class="close-x-btn glass-button" id="closePopupBtn">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <p class="message-text" id="birthdayMessage" 
+                    data-full-text="&ldquo;Ada banyak kisah yang dimulai dari bangku sekolah. 
+                    Tapi, 
+                    kisah ini...
+                    cuma punya satu nama yang paling berharga
+                    <b>Naura Khalisa Sumarno</b> itulah nama dia,
+                    ia berambut pirang dengan potongan rambut Bondol, 
+                    memiliki tinggi badan yang cukup lumayan tapi tidak terlalu pendek, 
+                    ia pintar, 
+                    semasa SMP ia selalu dapat ranking, 
+                    dia duduk disebalahku, jarak terdekat yang paling kurindukan, 
+                    dia orang yang menyenangkan, 
+                    tapi memiliki sisi lain yang tidak diketahui oleh banyak orang, 
+                    ketawanya sungguh cantik, 
+                    senyuman nya begitu manis, 
+                    dia orang yang membuat saya tidak fokus saat belajar, 
+                    dia  adalah penyemangat saya  untuk masuk sekolah, 
+                    kalo dia ga masuk sekolah seperti telur dadar yang tidak pakai garam, hambar rasanya, 
+                    dia adalah orang terfavorit saya semasa SMP,  
+                    jika dia seorang idol mungkin saya menjadi fans terberatnya, 
+                    ia seorang perempuan, 
+                    perempuan yang membuat saya menyukai nya hampir 3 tahun, 
+                    perempuan yang sulit dilupakan, 
+                    perempuan yang menjadi cinta pertama saya. 
+                    Jika saya harus menjalani sepuluh ribu kehidupan, saya akan tetap memilihnya
+                    perempuan yang pernah hadir di doa² saya, 
+                    perempuan yang mengajarkan saya bahwa cinta tak harus dimiliki dan tak harus memiliki, 
+                    perempuan yang mengajarkan saya bahwa kenal dengan orang seberarti dia sudah menjadi anugerah tersendiri, 
+                    perempuan yang kalo latah mengucapkan 'kuyang meledak mampus', 
+                    perempuan yang lahir di kota Jakarta pada hari Selasa 11 Desember 2007, 
+                    perempuan yang lahir pada hari Selasa 1 Dzulhijah 1428, 
+                    perempuan yang memiliki zodiak sagitarius, 
+                    perempuan yang lahir saat terjadi ledakan bom di Aljazair, 
+                    perempuan cantik itu bertambah 1 tahun usianya pada hari ini, 
+                    semoga tahun ini bukan sekedar pengulangan dari yang lalu atau putaran waktu yang sama tanpa arah baru, 
+                    jarum jam mungkin berdetak dengan lagu yang sama, 
+                    fajar pun selalu membuka tirai dari sisi yang sama, 
+                    tapi kali ini, 
+                    langkah kaki inilah yang akan menapaki jalan yang berbeda, 
+                    menciptakan jejak di tempat yang bahkan belum terpetakan,&lt;br&gt;
+                    Saya hanya ingin mengucapkan terima kasih kepada keluarganya karena sudah menjaga dan merawat perempuan cantik ini yang begitu berarti dalam hidupku yang banyak meninggalkan kenangan.&rdquo;&lt;br&gt;
+                    Selamat ulang tahun ya. Panjang umur, dilancarkan rezekinya, dipermudah segala urusannya, dan semoga sehat selalu. Terima kasih udah pernah jadi bagian penting di cerita SMP gw.">
+                </p>
+                <button class="skip-typing-btn glass-button" id="skipTypingBtn">Tampilkan Semua Pesan</button>
+            </div>
+        </div>
+
+        <div id="confetti-container"></div>
+        <script src="script.js"></script>
+    </body>
+</html>
